@@ -1,5 +1,7 @@
 import { defineStore } from "pinia";
 
+const API_URL = import.meta.env.VITE_APP_TASKS;
+
 export const useTaskStore = defineStore("taskStore", {
   state: () => ({
     tasks: [],
@@ -19,7 +21,7 @@ export const useTaskStore = defineStore("taskStore", {
   actions: {
     async getTasks() {
       this.loading = true;
-      const response = await fetch("http://localhost:3000/tasks");
+      const response = await fetch(`${API_URL}`);
       const data = await response.json();
       this.tasks = data;
       this.loading = false;
@@ -27,7 +29,7 @@ export const useTaskStore = defineStore("taskStore", {
     async addTask(task) {
       this.tasks.push(task);
 
-      const response = await fetch("http://localhost:3000/tasks", {
+      const response = await fetch(`${API_URL}`, {
         method: "POST",
         body: JSON.stringify(task),
         headers: { "Content-Type": "application/json" },
@@ -38,7 +40,7 @@ export const useTaskStore = defineStore("taskStore", {
     async deleteTask(id) {
       this.tasks = this.tasks.filter((t) => t.id !== id);
 
-      const response = await fetch(`http://localhost:3000/tasks/${id}`, {
+      const response = await fetch(`${API_URL}/${id}`, {
         method: "DELETE",
       });
 
@@ -48,7 +50,7 @@ export const useTaskStore = defineStore("taskStore", {
       const task = this.tasks.find((t) => t.id === id);
       task.isFav = !task.isFav;
 
-      const response = await fetch(`http://localhost:3000/tasks/${id}`, {
+      const response = await fetch(`${API_URL}/${id}`, {
         method: "PUT",
         body: JSON.stringify(task),
         headers: { "Content-Type": "application/json" },
