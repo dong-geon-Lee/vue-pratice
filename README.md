@@ -1,30 +1,24 @@
 # pinia-tasks
 
-This template should help get you started developing with Vue 3 in Vite.
 
-## Recommended IDE Setup
+## :link: &nbsp; Link
+- https://vue-pratice.vercel.app
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+### 설치
 
 ```sh
 npm install
+npm install -g json-server
 ```
 
-### Compile and Hot-Reload for Development
+### 서버 실행 
+
+```sh 
+npm run dev 
+```
+
+### 데이터베이스 실행
 
 ```sh
-npm run dev
+json-server -w ./data/db.json
 ```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-# vue-pratice
